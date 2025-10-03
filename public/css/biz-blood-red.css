@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+:root {
+    --headings-color: #ab5216;
+    --background-color: #72281d;
+    --gold-color: #f0f0f1;
+    --menu-color: #fffefe;
+    --border-color: #000;
+    --border-color: #000;
+}
+
+body {
+    background: var(--background-color);
+}
+
+.menu-logo {
+    width: 80%;
+    margin: auto;
+    display: block;
+    max-width: 250px;
+}
+
+.heading {
+    text-align: center;
+    font-family: 'Russo One', sans-serif;
+    color: var(--headings-color);
+}
+
+.menu_section {
+    border: 4px solid var(--border-color);
+    position: relative;
+    padding-top: 40px !important;
+    padding-left: 15px !important;
+}
+
+.sec-heading span:after, .sec-heading span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+}
+
+.sec-heading {
+    background-color: var(--headings-color);
+    font-family: 'Russo One', sans-serif;
+    color: var(--gold-color);
+    font-size: 36px;
+    padding: 10px 15px;
+    left: 15px;
+    position: absolute;
+    top: -35px;
+}
+
+.menu-price {
+    font-family: 'Russo One', sans-serif;
+    color: var(--gold-color);
+    text-align: center;
+    font-size: 36px;
+}
+
+.menu-title {
+    color: var(--menu-color);
+    font-size: 18px;
+}
+
+.menu-price {
+    font-size: 18px;
+}
+
+p.detail{
+    color: var(--menu-color);
+}
+
+h1 {
+    color: var(--headings-color);
+    font-size: 6rem;
+}
+
+.biz-header span,
+.biz-header .address {
+    color: var(--menu-color);
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+
+    nav.navbar{
+        max-height: 300px;
+    }
+
+    div#navbarResponsive {
+        height: 250px;
+        overflow-y: auto;
+        z-index: 99;
+    }
+}

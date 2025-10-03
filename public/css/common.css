@@ -1,0 +1,429 @@
+body {
+    background-color: #f8f9fa;
+    padding-bottom: 60px; /* space for bottom nav */
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #ffffff;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0;
+}
+.bottom-nav .nav-item {
+    flex: 1;
+    text-align: center;
+}
+.bottom-nav .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    color: #ff6347; /* Theme color from dgmenu.in */
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+.bottom-nav .nav-link .material-icons {
+    font-size: 1.5rem;
+}
+.bottom-nav .nav-link.active {
+    color: #ff4500; /* New active color */
+}
+.bottom-nav .nav-link:hover {
+    color: #e55342; /* Darker shade for hover effect */
+}
+.bottom-nav .nav-link .label {
+    font-size: 0.75rem;
+}
+
+body{
+    position: relative;
+}
+.bg-dark {
+    background-color: #3E3321 !important;
+}
+
+.bg-light {
+    background-color: #F5F7F8 !important;
+}
+
+.bg-light2 {
+    background: #f8efba;
+}
+
+.bg-light h1 {
+    color: #3E3321;
+}
+
+nav.navbar {
+    border-bottom: 1px solid #555;
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+.nav-link{
+    color:#ddd;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show{
+    color: #ffc107;
+}
+
+.text-brown{
+    color: var(--dark);
+}
+
+
+p {
+    font-size: 18px;
+    line-height: 36px;
+    color: #495057;
+}
+
+.theme-contact-info svg {
+    width: 28px;
+    float: left;
+    margin: 5px 10px;
+}
+
+.hide{
+    display:none;
+}
+
+img.country-map {
+    position: absolute;
+    z-index: 0;
+    height: 400px;
+    width: auto;
+    left: 10%;
+    opacity: 0.15;
+}
+
+.page-subheading{
+    color: #FFF;
+}
+
+.r1 {
+    border-radius: 4px;
+}
+
+.outline-icon {
+    color: #f98052;
+    font-size: 40px;
+}
+
+.mobile-nav {
+    background: #e0d2b7;
+    position: fixed;
+    bottom: 0;
+    height: 65px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 0.05rem 4rem 0 rgba(0, 0, 1, 0.12);
+}
+
+.bloc-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer{
+background-color: #3E3321;
+color: #FFFFFFCC;
+}
+footer a.nav-link {
+  color: #FFFFFFCC;
+}
+
+footer a.nav-link:hover, footer a.nav-link:focus {
+  color: #f98052;
+}
+
+.whatsapp-chat {
+bottom: 75px;
+position: fixed;
+right: 15px;
+z-index: 99;
+width: 200px;
+text-align: center;
+}
+
+a.navbar-brand {
+background: #FFF;
+border-radius: 4px;
+padding: 0px 15px;
+opacity: 0.8;
+}
+
+h5.card-title {
+text-decoration: none;
+color: #484848;
+font-size: 18px;
+font-weight: 700;
+}
+
+.resturent-list a {
+text-decoration: none;
+}
+
+p.card-text {
+font-size: 16px;
+line-height: 1.2;
+}
+
+span.card-title-img {
+position: absolute;
+left: 15px;
+top: 10px;
+color: #FFF;
+font-size: 16px;
+}
+
+.restaurant-card {
+display: block;
+text-decoration: none; /* Remove underline from link */
+background-color: #fff;
+border: 1px solid #ddd;
+border-radius: 5px;
+padding: 15px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.2s, box-shadow 0.2s;
+position: relative;
+margin-bottom: 20px;
+color: inherit; /* Inherit text color from parent */
+}
+
+.restaurant-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.restaurant-name {
+margin: 0;
+font-size: 1.5em;
+display: flex;
+align-items: center;
+}
+
+.veg-icon, .non-veg-icon {
+margin-left: 10px;
+}
+
+.restaurant-cuisine {
+font-size: 0.9em;
+color: #555;
+margin: 0;
+}
+
+.restaurant-address {
+padding-top: 5px;
+align-items: center;
+font-size: 16px;
+line-height: 22px;
+display: flex;
+}
+
+.restaurant-address span {
+padding-right: 10PX;
+}
+
+.restaurant-address img {
+margin-right: 8px;
+}
+
+.restaurant-reviews {
+margin-top: 10px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 0.9em;
+color: #777;
+}
+
+.review-count {
+display: flex;
+align-items: center;
+}
+
+.review-count img {
+margin-right: 5px;
+}
+
+.bookmark-icon {
+position: absolute;
+top: 15px;
+right: 15px;
+cursor: pointer;
+}
+
+
+.cta-search .form-control {
+font-family: "Open Sans", Sans-serif;
+font-size: 16px;
+background-color: #FFFFFF1A;
+border-radius: 5px 0px 0px 5px;
+color: #FFF;
+}
+
+.cta-search .form-control::placeholder {
+color: #FFFFFFCC;
+opacity: 1; /* Firefox */
+}
+
+.cta-search .form-control::-ms-input-placeholder { /* Edge 12 -18 */
+color: #FFFFFFCC;
+}
+
+.mobile-nav svg {
+    width: 30px;
+    height: 30px;
+}
+
+.btn-subscribe {
+  background-color: #4d4d50;
+  color: #f1f1f1;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  align-items: flex-start;
+  padding: 19px 40px;
+  border: none;
+  border-radius: 0px 5px 5px 0px;
+  border-radius: 0 5px 5px 0;
+  transition: all 0.3s ease-in-out;
+  font-family: "Open Sans", Sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-style: normal;
+  line-height: 22px;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+ @media screen and (min-width: 600px) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .site-logo {
+        width: 100px !important;
+        height: 100px;
+    }
+
+    .site-logo-can {
+        width: 60%;
+    }
+
+    .btn-bar .btn {
+        width: 100%;
+        padding: 15px !important;
+        margin: 4px 15px;
+        font-size: 20px;
+    }
+
+    img.country-map{
+        left: 0;
+    }
+}
+
+div#navbarOffcanvas{
+    width: 250px;
+    background: #825200;
+}
+
+.profile-circle {
+    width: 35px;
+    height: 35px;
+    background-color: #996655; /* Dynamic Random Color */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Receipes Listing */
+.recipe-card {
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-image {
+    width: 20%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recipe-content {
+    padding: 1.5rem;
+    width: 60%;
+}
+
+.card-title a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.card-title a:hover {
+    text-decoration: underline;
+}
+
+.card-category {
+    font-size: 0.9em;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+
+
+
+@media (max-width: 767.98px) {
+    .bottom-nav {
+        flex-direction: row;
+    }
+    .bottom-nav .nav-link {
+        font-size: 0.8rem;
+        padding: 8px 0;
+    }
+    .bottom-nav .nav-link .material-icons {
+        font-size: 1.2rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    body{
+        padding-bottom: 0px; /* space for bottom nav */
+    }
+    
+    .bottom-nav{
+        display: none;
+    }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {...}
+

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="234.549" height="83.767" viewBox="0 0 234.549 83.767">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_17097" data-name="Rectangle 17097" width="234.549" height="83.767" transform="translate(0 0)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_11206" data-name="Group 11206" transform="translate(0 0)">
+    <g id="Group_11205" data-name="Group 11205" clip-path="url(#clip-path)">
+      <path id="Path_12321" data-name="Path 12321" d="M34.967,66.361c-2.016,8.146.51,11.517,1.591,12.533l0,.006a1.958,1.958,0,0,0,.24.2,2.008,2.008,0,0,0,.213.156l.005-.005c1.226.791,5.024,2.37,12.552-1.438,9.275-4.689,17.3-12.8,12.389-25.447a202.648,202.648,0,0,1,20.7-27.534C94.6,11.3,104.107,6.263,97.909,1.27l0,0c-.015-.012-.033-.022-.049-.036s-.03-.025-.046-.039l0,0c-6.325-4.834-8.952,5.6-19.258,20.417A202.412,202.412,0,0,1,56.738,48.274c-13.452-1.762-19.273,8-21.771,18.087" fill="#8b5e3c"/>
+      <path id="Path_12322" data-name="Path 12322" d="M.01,71.456c-.345-2.14,8.226-10.241,19.964-9.8a127.7,127.7,0,0,1,19.713,2.531c-5.774,2.138-20.485,7.251-26.21,6.928,0,0,9.72,1.958,27.43-4.839-2.751,3.777-10.4,13.13-19.614,14.614C9.7,82.759.354,73.6.01,71.456" fill="#009444"/>
+      <path id="Path_12323" data-name="Path 12323" d="M17.064,37.219c1.081-.875,8.319,1.31,11.814,7.979a81.717,81.717,0,0,1,4.878,11.771c-3.029-2.53-10.563-9.082-12.209-12.369,0,0,2.011,6.03,11.436,13.713-2.977-.326-10.617-1.6-14.38-6.248-4.737-5.854-2.619-13.974-1.539-14.846" fill="#009444"/>
+      <text id="Fresh" transform="translate(70.763 75.38)" fill="#009444" font-size="21.613" font-family="NexaRustSlab-BlackShadow01, 'Nexa Rust Slab Shadow \30 1'" font-weight="800"><tspan x="0" y="0">Fr</tspan><tspan y="0" letter-spacing="0.009em">e</tspan><tspan y="0">sh</tspan></text>
+      <text id="_food" data-name=" food" transform="translate(155.031 75.38)" fill="#8b5e3c" font-size="21.613" font-family="NexaRustSlab-BlackShadow01, 'Nexa Rust Slab Shadow \30 1'" font-weight="800"><tspan x="0" y="0"> </tspan><tspan y="0" letter-spacing="-0.01em">f</tspan><tspan y="0" letter-spacing="0.02em">o</tspan><tspan y="0" letter-spacing="-0.019em">o</tspan><tspan y="0">d</tspan></text>
+    </g>
+  </g>
+</svg>

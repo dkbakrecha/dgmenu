@@ -1,0 +1,126 @@
+body {
+    background-color: #fffaf5;
+}
+h1, h2, h3, h4, h5 {
+    color: #3E3321;
+}
+.navbar-brand {
+    font-weight: bold;
+    color: #E4572E !important;
+    width: 120px;
+}
+
+.hide {
+    display: none !important;
+}
+
+.nav-link {
+    color: #3E3321;
+    font-weight: 500;
+}
+.nav-link:hover {
+    text-decoration: underline;
+    color: #E4572E;
+}
+
+#profileDropdown {
+    text-decoration: none;
+}
+
+.profile-circle {
+    background: black;
+    padding: 5px;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid #ddd;
+}
+.btn-primary {
+    background-color: #E4572E;
+    border-color: #E4572E;
+}
+.btn-primary:hover {
+    background-color: #d34d29;
+    border-color: #d34d29;
+}
+.btn-outline-secondary {
+    color: #E4572E;
+    border-color: #E4572E;
+}
+.btn-outline-secondary:hover {
+    background-color: #E4572E;
+    color: #fff;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 50%;
+}
+
+/* for theme page */
+.theme-wrapper .option {
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid lightgrey;
+    transition: all 0.3s ease;
+}
+
+.theme-wrapper .option.active {
+    border: 2px solid green;
+}
+
+.form-group.row {
+    border-bottom: 1px solid #CCC;
+    padding-bottom: 15px;
+    background: #FBFBFB;
+    padding-top: 15px;
+}
+
+  @media (max-width: 767.98px) {
+    .remove-center-mobile {
+        justify-content: flex-start !important;
+        padding-top: 2rem;
+    }
+    .banner-wrapper {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .site-logo-menu {
+        width: 120px;
+    }
+    }
+
+    .vh-100 {
+    min-height: 100vh;
+    }
+
+    .site-logo-menu {
+    max-width: 160px;
+    }
+
+    .input-group-text .material-symbols-outlined {
+    font-size: 20px;
+    }
+
+@media (min-width: 768px) {
+    .navbar .offcanvas {
+    display: none !important;
+    }
+    .navbar .navbar-collapse {
+    display: flex !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+  .remove-center-mobile {
+    align-items: flex-start !important;
+  }
+}

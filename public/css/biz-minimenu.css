@@ -1,0 +1,48 @@
+:root {
+    --headings-color: #fff;
+    --background-color: #333;
+    --gold-color: #ffd700;
+    --menu-color: #ddd;
+}
+
+body {
+    background: var(--background-color);
+}
+
+.biz-header {
+    border-bottom: 1px solid #dfdfdf;
+    background: var(--background-color);
+}
+
+.sec-heading,
+.menu-price {
+    color: var(--gold-color);
+}
+
+.menu-title {
+    color: var(--menu-color);
+}
+
+h1 {
+    color: var(--headings-color);
+    font-size: 6rem;
+}
+
+.biz-header span,
+.biz-header .address {
+    color: var(--menu-color);
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+
+    nav.navbar{
+        max-height: 300px;
+    }
+
+    div#navbarResponsive {
+        height: 250px;
+        overflow-y: auto;
+        z-index: 99;
+    }
+}
