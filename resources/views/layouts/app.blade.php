@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name=description content="--" />
-    <meta name="author" content="Dharmendra" />
     
     @if(request()->getHost() == 'localhost')
     <!-- Google tag (gtag.js) -->
@@ -19,7 +17,9 @@
     </script>
     @endif
 
-    <title>{{ env('APP_NAME') }}</title>
+    <title>{{ $meta_title ?? env('APP_NAME') }}</title>
+    <meta name="description" content="{{ $meta_description ?? 'Discover authentic recipes collected from traditional old books and home kitchens.' }}">
+    <meta name="author" content="Dharmendra" />
     
 
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -48,8 +48,9 @@
 </head>
 
 <body>
+  <div class="sticky-top">
 <!-- Responsive Navbar -->
-<nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm sticky-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm ">
   <div class="container">
     <!-- Brand Logo -->
       @if(Auth::check())
@@ -85,11 +86,33 @@
   </div>
 </nav>
 
+ @if(Auth::check())
+    <div class="nav-scroller bg-body shadow-sm">
+      <div class="container">
+      <nav class="nav nav-underline" aria-label="Secondary navigation">
+        <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+        <a class="nav-link" href="#">
+          Friends
+          <span class="badge bg-light text-dark rounded-pill align-text-bottom">27</span>
+        </a>
+        <a class="nav-link" href="#">Explore</a>
+        <a class="nav-link" href="#">Suggestions</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Link</a>
+      </nav>
+      </div>
+
+    </div>
+    @endif
+
+  </div>
 
 
     <!-- Main Content-->
     @yield('content')
-    
     
 
 

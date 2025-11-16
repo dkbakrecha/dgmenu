@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.app')
 @if (session()->has('addPostSuccess'))
 @section('alerts')
 <div class="alert alert-success alert-dismissible fade show light-green" role="alert">

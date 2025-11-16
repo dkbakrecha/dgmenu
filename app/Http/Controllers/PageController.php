@@ -48,8 +48,12 @@ class PageController extends Controller
 
     public function about()
     {
-        return view('pages.about');
+        $meta_title = "About Us | Authentic Recipe Platform - dgmenu.in";
+        $meta_description = "Discover authentic, time-tested recipes from India and beyond on dgmenu.in. Explore free recipes collected from original cookbooks and culinary traditions, shared for every food lover.";
+
+        return view('pages.about', compact('meta_title', 'meta_description'));
     }
+
 
     public function pricing()
     {

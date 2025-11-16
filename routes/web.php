@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\AdminController;
 
 use App\Http\Controllers\SearchController;
 
+use App\Http\Controllers\Admin\RecipeController as AdminRecipe;
+
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CommentController;
 
@@ -65,9 +67,17 @@ Route::post('/feedback/submit', [FeedbackController::class, 'submit'])->name('fe
 
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
 Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipes.create');
-Route::get('/recipes/{slug}', [RecipeController::class, 'show'])->name('recipes.show');
 
 Route::post('/recipes', [RecipeController::class, 'store'])->name('recipes.store')->middleware('auth');
+
+
+//For Super admin
+Route::get('/recipes/list', [RecipeController::class, 'list'])->name('recipes.list');
+
+Route::get('/recipes/random', [RecipeController::class, 'random'])
+    ->name('recipes.random');
+Route::get('/recipes/{slug}', [RecipeController::class, 'show'])->name('recipes.show');
+
 Route::post('/recipes/{id}/comment', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
 
 Route::post('/recipes/{id}/share', [RecipeController::class, 'shareToTelegram'])->name('recipes.share');
@@ -179,4 +189,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'admin'], function () {
     Route::resource('users', AdminUser::class);
     Route::resource('questions', AdminQuestion::class);
     Route::resource('tags', AdminTag::class);
+
+    Route::resource('recipes', AdminRecipe::class);
+
 });

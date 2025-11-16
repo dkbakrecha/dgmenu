@@ -123,4 +123,22 @@ class RecipeController extends Controller
         return redirect()->route('recipes.index')->with('success', 'Blog shared to Telegram successfully!');
     }
 
+    public function random()
+    {
+        // Fetch a random recipe
+        $recipe = Recipe::with(['category', 'tags'])
+                        ->inRandomOrder()
+                        ->first();
+       
+                        // If no recipes exist
+        if (!$recipe) {
+            return redirect()->route('recipes.index')
+                            ->with('error', 'No recipes found.');
+        }
+
+        // Redirect to the recipe detail page
+        return redirect()->route('recipes.show', $recipe->slug);
+    }
+
+
 }
