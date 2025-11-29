@@ -21,6 +21,13 @@ tr:nth-child(even) {
 
 </style>
 
+<div class="bg-dark py-5 text-center text-white mb-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Pricing Plans</h1>
+        <p class="lead text-white-50">Choose the perfect plan for your business</p>
+    </div>
+</div>
+
 <section class="py-5 bg-light" id="features">
     <div class="container">
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
@@ -72,7 +79,7 @@ tr:nth-child(even) {
                     </tr>
                     <tr>
                         <td>
-                            <a href="{{ route('register-user') }}" class="btn btn-outline-dark p-2 pe-3 ps-3 active ms-3" title="support">Get Start Free</a>
+                            <a href="{{ route('register-user') }}" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-sm">Get Started Free</a>
                         </td>
                     </tr>
                 </table>

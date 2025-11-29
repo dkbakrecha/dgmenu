@@ -1,12 +1,14 @@
-@extends('layouts/admin')
-
-@section('breadcrumb')
-    <div class="col-sm-6">
-        <h2 class="m-0">Add Tag</h2>
-    </div><!-- /.col -->  
-@endsection
+@extends('layouts.app')
 
 @section('content')
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <h2 class="m-0">Add Tag</h2>
+        </div>
+    </div>
+
+
     <!-- Main content -->
     <section class="content">
         <form method="POST" action="{{ route('tags.store') }}" enctype="multipart/form-data">

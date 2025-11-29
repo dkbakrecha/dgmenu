@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @if (session()->has('updatePostSuccess'))
     @section('alerts')
         <div class="alert alert-success alert-dismissible fade show light-green" role="alert">
@@ -10,13 +10,15 @@
     @endsection
 @endif
 
-@section('breadcrumb')
-    <div class="col-sm-6">
-        <h2 class="m-0">Edit Article</h2>
-    </div><!-- /.col -->  
-@endsection
-
 @section('content')
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <h2 class="m-0">Edit Article</h2>
+        </div>
+    </div>
+
+
     <!-- Main content -->
     <section class="content">
         <form method="POST" action="{{ route('posts.update', $post->title_slug) }}" enctype="multipart/form-data">
@@ -31,22 +33,11 @@
                                 <input type="text" name="title" id="title" class="form-control"
                                     value="{{ $post->title }}">
                             </div>
+
                             <div class="form-group">
-                                <label for="resume">Post Excerpt</label>
-                                <textarea id="resume" name="short_description" class="form-control"
-                                    rows="3" required>{{ $post->short_description }}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="body">Post Description</label>
-                                <textarea id="body" name="body" class="form-control"
-                                    rows="5" required>{{ $post->content }}</textarea>
-                            </div>
-                            <div class="image-preview">
-                                <img src="{{ asset('images/' . $post->cover_image) }}" alt="">
-                            </div>
-                            <div class="form-group">
-                                <label for="image">New Image</label>
-                                <input type="file" name="cover_image" class="form-control-file" id="image">
+                                <label for="title_slug">Slug</label>
+                                <input type="text" name="title_slug" id="title_slug" class="form-control"
+                                    value="{{ $post->title_slug }}" readonly>
                             </div>
 
                             <div class="form-group">
@@ -55,7 +46,7 @@
                                     <option disabled>Select one</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}"
-                                            {{-- $category->id == $post->categories->first()->id ? 'selected' : '' --}}>
+                                            {{ $post->category_id == $category->id ? 'selected' : '' }}>
                                             {{ $category->title }}
                                         </option>
                                     @endforeach
@@ -63,12 +54,32 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="post_type">Article Type</label>
+                                <label for="resume">Short Description</label>
+                                <textarea id="resume" name="short_description" class="form-control"
+                                    rows="3" required>{{ $post->short_description }}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="body">Content</label>
+                                <textarea id="body" name="body" class="form-control"
+                                    rows="10" required>{{ $post->content }}</textarea>
+                            </div>
+
+                            <div class="image-preview mb-2">
+                                <img src="{{ asset('images/' . $post->cover_image) }}" alt="" style="max-width: 200px;">
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Thumb Image</label>
+                                <input type="file" name="cover_image" class="form-control-file" id="image">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="post_type">Post Type</label>
                                 <select id="post_type" name="post_type" class="form-control custom-select">
                                     <option disabled>Select one</option>
-                                    <option value="1">Notes</option>
-                                    <option value="2">Blog</option>
-                                    <option value="3">Exam Notification</option>
+                                    <option value="1" {{ $post->post_type == 1 ? 'selected' : '' }}>Notes</option>
+                                    <option value="2" {{ $post->post_type == 2 ? 'selected' : '' }}>Blog</option>
+                                    <option value="3" {{ $post->post_type == 3 ? 'selected' : '' }}>Exam Notification</option>
                                 </select>
                             </div>
 
@@ -94,11 +105,12 @@
         </form>
     </section>
     <!-- /.content -->
+</div>
 @endsection
 
 
 
-@section('javascript')
+@section('jscript')
 <script type="text/javascript">
     $(document).ready(function() {
     $('#body').summernote();

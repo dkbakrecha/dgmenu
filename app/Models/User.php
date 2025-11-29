@@ -49,6 +49,11 @@ class User extends Authenticatable
         return $this->hasMany(Business::class);
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     public function isAdmin(){
         return $this->role == 'admin' ? true : false ;
     }

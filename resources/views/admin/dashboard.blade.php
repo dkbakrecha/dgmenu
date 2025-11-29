@@ -1,10 +1,14 @@
-@extends('layouts/admin')
+@extends('layouts.app')
 
-@section('content')
+
 <!-- Main content -->
-<section class="content">
-    <div class="container-fluid">
-        <h4>Welcome {{ auth()->user()->name }}</h4>
+@section('content')
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        </div>
+    </div>
 
         <div class="row">
             <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12">
@@ -23,4 +27,5 @@
 </section>
 <!-- /.content -->
 
+</div>
 @endsection

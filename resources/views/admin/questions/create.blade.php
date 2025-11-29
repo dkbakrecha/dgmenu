@@ -1,12 +1,14 @@
-@extends('layouts/admin')
-
-@section('breadcrumb')
-<div class="col-sm-6">
-    <h2 class="m-0">Question</h2>
-</div><!-- /.col -->
-@endsection
+@extends('layouts.app')
 
 @section('content')
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <h2 class="m-0">Question</h2>
+        </div>
+    </div>
+
+
 <!-- Main content -->
 <section class="content">
     <form method="POST" action="{{ route('questions.store') }}" enctype="multipart/form-data">
@@ -102,9 +104,10 @@
     </form>
 </section>
 <!-- /.content -->
+</div>
 @endsection
 
-@section('javascript')
+@section('jscript')
 <script type="text/javascript">
     var cookie_cate_id;
     var cookie_subCate_id;

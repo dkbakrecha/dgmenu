@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @if (session()->has('updatePostSuccess'))
     @section('alerts')
         <div class="alert alert-success alert-dismissible fade show light-green" role="alert">
@@ -10,13 +10,15 @@
     @endsection
 @endif
 
-@section('breadcrumb')
-    <div class="col-sm-6">
-        <h2 class="m-0">Edit Question</h2>
-    </div><!-- /.col -->  
-@endsection
-
 @section('content')
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <h2 class="m-0">Edit Question</h2>
+        </div>
+    </div>
+
+
     <!-- Main content -->
     <section class="content">
         <form method="POST" action="{{ route('questions.update', $question->id) }}" enctype="multipart/form-data">
@@ -95,11 +97,12 @@
         </form>
     </section>
     <!-- /.content -->
+</div>
 @endsection
 
 
 
-@section('javascript')
+@section('jscript')
 <script type="text/javascript">
     $(document).ready(function() {
         $('#body').summernote();

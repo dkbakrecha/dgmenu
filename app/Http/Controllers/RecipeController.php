@@ -29,8 +29,8 @@ class RecipeController extends Controller
             $query->where('title', 'like', '%' . $request->search . '%');
         }
     
-        if ($request->has('category')) {
-            //   $query->where('category_id', $request->category);
+        if ($request->has('category') && $request->category != '') {
+               $query->where('category_id', $request->category);
         }
     
         if ($request->has('tags')) {

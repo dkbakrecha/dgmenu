@@ -1,28 +1,31 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
-
-@section('breadcrumb')
-<div class="col-sm-6">
-    <h1 class="h3 mb-4 text-gray-800">Tags</h1>
-</div><!-- /.col -->
-<div class="col-sm-6">
-    <a class="btn btn-success float-sm-right" href="{{ route('tags.create') }}">
-        Create Tags
-    </a>
-</div><!-- /.col -->
-@endsection
-
-@section('search')
-<form class="form-inline" method="GET">
-        <div class="form-group mb-2">
-            <label for="filter" class="col-sm-2 col-form-label">Filter</label>
-            <input type="text" class="form-control" id="filter" name="filter" placeholder="Search Tag Name..." value="{{$filter}}">
-        </div>
-        <button type="submit" class="btn btn-default mb-2">Filter</button>
-    </form>
-@endsection
 
 @section('content')
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <h1 class="h3 mb-0 text-gray-800">Tags</h1>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success float-end" href="{{ route('tags.create') }}">
+                Create new Tag
+            </a>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <form class="form-inline d-flex gap-2" method="GET">
+                <div class="form-group mb-0 flex-grow-1">
+                    <input type="text" class="form-control w-100" id="filter" name="filter" placeholder="Search title..." value="{{$filter}}">
+                </div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+    </div>
+
+
 <!-- Main content -->
 <section class="content">
     
@@ -86,7 +89,7 @@
 <!-- /.content -->
 @endsection
 
-@section('javascript')
+@section('jscript')
 <script>
     $(document).ready(function() {
         // show alert before deleting post

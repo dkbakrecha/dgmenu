@@ -43,6 +43,55 @@
 
     <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
 
+    <style>
+        :root {
+            --bs-primary: #D48C56; /* Orange/Gold Accent */
+            --bs-primary-rgb: 212, 140, 86;
+            --bs-secondary: #4A3B32; /* Dark Brown */
+            --bs-secondary-rgb: 74, 59, 50;
+            --bs-body-bg: #F8F9FA;
+        }
+        
+        .btn-primary {
+            --bs-btn-bg: var(--bs-primary);
+            --bs-btn-border-color: var(--bs-primary);
+            --bs-btn-hover-bg: #c07a48;
+            --bs-btn-hover-border-color: #c07a48;
+        }
+
+        .btn-outline-primary {
+            --bs-btn-color: var(--bs-primary);
+            --bs-btn-border-color: var(--bs-primary);
+            --bs-btn-hover-bg: var(--bs-primary);
+            --bs-btn-hover-border-color: var(--bs-primary);
+        }
+
+        .text-primary {
+            color: var(--bs-primary) !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--bs-primary) !important;
+        }
+
+        .bg-dark {
+            background-color: var(--bs-secondary) !important;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lora', serif;
+            color: var(--bs-secondary);
+        }
+    </style>
+
+    <!-- Summernote CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
     @yield('meta')
     @yield('page-meta')
 </head>
@@ -87,21 +136,28 @@
 </nav>
 
  @if(Auth::check())
-    <div class="nav-scroller bg-body shadow-sm">
+    <div class="nav-scroller bg-body shadow-sm" style="overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;">
       <div class="container">
       <nav class="nav nav-underline" aria-label="Secondary navigation">
-        <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-        <a class="nav-link" href="#">
-          Friends
-          <span class="badge bg-light text-dark rounded-pill align-text-bottom">27</span>
-        </a>
-        <a class="nav-link" href="#">Explore</a>
-        <a class="nav-link" href="#">Suggestions</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link active" aria-current="page" href="{{ route('board') }}">Dashboard</a>
+        
+        <a class="nav-link" href="{{ route('resturents') }}">Restaurants</a>
+        <a class="nav-link" href="{{ route('recipes.index') }}">Recipes</a>
+        <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
+
+        @if(isset(auth()->user()->role) && auth()->user()->role == 1)
+            <!-- Super Admin Links -->
+            <a class="nav-link" href="{{ route('users.index') }}">Users</a>
+            <a class="nav-link" href="{{ route('business_listing.index') }}">Business Listing</a>
+            <a class="nav-link" href="{{ route('posts.index') }}">Manage Blogs</a>
+            <a class="nav-link" href="{{ route('posts.create') }}">Create Blog</a>
+        @endif
+
+        @if(!empty($business->id))
+            <a class="nav-link" href="{{ route('business.edit', $business->id) }}">Update Business</a>
+        @endif
+        <a class="nav-link" href="{{ route('themes') }}">Theme</a>
+
       </nav>
       </div>
 
@@ -125,6 +181,7 @@
     <ul class="nav flex-column flex-sm-row justify-content-start justify-content-sm-center">
         <li class="nav-item"><a href="{{ route('homepage') }}" class="nav-link text-white px-2">Home</a></li>
         <li class="nav-item"><a href="{{ route('resturents') }}" class="nav-link text-white px-2">Restaurants</a></li>
+        <li class="nav-item"><a href="{{ route('blog.index') }}" class="nav-link text-white px-2">Blog</a></li>
         <li class="nav-item"><a class="nav-link text-white px-2" href="#how">How It Works</a></li>
         <li class="nav-item"><a class="nav-link text-white px-2" href="#features">Features</a></li>
 
@@ -157,6 +214,10 @@
 
     <!-- Core theme JS-->
     <script src="{{ asset('js/scripts.js') }}"></script>
+
+    <!-- Summernote JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     @yield('jscript')
     @stack('scripts')

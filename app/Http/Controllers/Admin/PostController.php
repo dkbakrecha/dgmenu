@@ -19,7 +19,7 @@ class PostController extends Controller
     {
         $filter = $request->query('filter');
 
-        $posts = Post::select('*')->with('user', 'categories')->orderBy('id', 'desc');
+        $posts = Post::select('*')->with('user', 'category')->orderBy('id', 'desc');
 
         if(!empty($request->filter)){
             $searchFields = ['title'];
@@ -34,7 +34,13 @@ class PostController extends Controller
 
         $posts = $posts->paginate(10)->withQueryString();
 
-        return view('admin.posts.index', compact('posts', 'filter'));
+        $post_type = [
+            1 => 'Notes',
+            2 => 'Blog',
+            3 => 'Exam Notification'
+        ];
+
+        return view('admin.posts.index', compact('posts', 'filter', 'post_type'));
     }
 
     /**
@@ -44,9 +50,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //$categories = Category::all();
+        $categories = Category::all();
 
-        return view('admin.posts.create');
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -63,6 +69,17 @@ class PostController extends Controller
         }else{
             $postData['cover_image'] = "";
         }
+        
+        // Generate slug from title if not present or empty
+        if (empty($postData['title_slug'])) {
+            $postData['title_slug'] = \Illuminate\Support\Str::slug($postData['title']);
+        }
+
+        // Map category input to category_id
+        if ($request->has('category')) {
+            $postData['category_id'] = $request->category;
+        }
+
         //dd($postData);
         $request->user()->posts()->create($postData);
 
@@ -88,7 +105,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -115,6 +133,11 @@ class PostController extends Controller
         $post->short_description  = $request->short_description;
         $post->content     = $request->body;
         $post->post_type     = $request->post_type;
+        
+        if ($request->has('category')) {
+            $post->category_id = $request->category;
+        }
+
         $post->save();
 
         return redirect()->route('posts.index')->with('message', 'Post updated successfully');

@@ -49,6 +49,21 @@ use App\Http\Controllers\FeedbackController;
 |
 */
 
+
+//Admin Panel Web links
+Route::group(['prefix' => '/admin', 'middleware' => 'admin'], function () {
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin-admin');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin-dashboard');
+
+    Route::resource('posts', AdminPost::class);
+    Route::resource('users', AdminUser::class);
+    Route::resource('questions', AdminQuestion::class);
+    Route::resource('tags', AdminTag::class);
+
+    Route::resource('recipes', AdminRecipe::class);
+
+});
+
 Route::get('/', [PageController::class, 'index'])->name('homepage');
 Route::get('/homebeta', [PageController::class, 'homebeta'])->name('homebeta');
 Route::get('/homenew', [PageController::class, 'homenew'])->name('homenew');
@@ -160,12 +175,19 @@ Route::get('/room/pdf/{id}', [RoomController::class, 'createPDF']);
 
 Route::get('/resturents', [PageController::class, 'resturents'])->name('resturents');
 Route::get('/features', [PageController::class, 'features'])->name('features');
-Route::get('/business', [PageController::class, 'business'])->name('business');
+Route::get('/business-page', [PageController::class, 'business'])->name('business.page');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
 Route::get('/privacy-policy', [PageController::class, 'privacyPolicy'])->name('privacy-policy');
 
 
+
 Route::post('/businesses/{business}/reviews', [BusinessReviewController::class, 'store'])->name('reviews.store');
+
+// Blog Routes
+use App\Http\Controllers\BlogController;
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
 
 
 Route::get('/clear-cache', function() {
@@ -178,18 +200,4 @@ Route::get('/clear-cache', function() {
     echo "cache cleared";
     exit;
     // return what you want
-});
-
-//Admin Panel Web links
-Route::group(['prefix' => '/admin', 'middleware' => 'admin'], function () {
-    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin-admin');
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin-dashboard');
-
-    Route::resource('posts', AdminPost::class);
-    Route::resource('users', AdminUser::class);
-    Route::resource('questions', AdminQuestion::class);
-    Route::resource('tags', AdminTag::class);
-
-    Route::resource('recipes', AdminRecipe::class);
-
 });

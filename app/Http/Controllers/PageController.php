@@ -17,6 +17,9 @@ use App\Models\BusinessListing;
 use Illuminate\Support\Facades\Auth;
 
 use Carbon\Carbon;
+use App\Models\Recipe;
+use App\Models\Category;
+use App\Models\Tag;
 
 
 class PageController extends Controller
@@ -28,10 +31,9 @@ class PageController extends Controller
 
     public function index()
     {
-        if (Auth::check()) {
-        //    return redirect('board');
-        }
-        return view('pages.index');
+        $recipes = Recipe::with('category', 'tags')->orderBy('created_at', 'desc')->limit(6)->get();
+        $categories = Category::all();
+        return view('home', compact('recipes', 'categories'));
     }
 
     public function homebeta()
@@ -174,6 +176,11 @@ $todayFeedbacks = Feedback::where('business_id', Auth::user()->id)
         $user->save();
 
         return redirect()->route('board')->with('success', 'Profile updated successfully.');
+    }
+
+    public function business()
+    {
+        return view('pages.business');
     }
 
     public function resturents(Request $request)

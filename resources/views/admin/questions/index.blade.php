@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @if (session()->has('addPostSuccess'))
 @section('alerts')
 <div class="alert alert-success alert-dismissible fade show light-green" role="alert">
@@ -10,27 +10,31 @@
 @endsection
 @endif
 
-@section('breadcrumb')
-<div class="col-sm-6">
-    <h1 class="h3 mb-4 text-gray-800">Questions</h1>
-</div>
-<div class="col-sm-6">
-    <a class="btn btn-success float-sm-right" href="{{ route('questions.create') }}">
-        Create Questions
-    </a>
-</div><!-- /.col -->
-@endsection
-
-@section('search')
-    <form class="form-inline" method="GET">
-        <div class="form-group mb-2">
-            <input type="text" class="form-control" id="filter" name="filter" placeholder="Search title..." value="{{$filter}}">
-        </div>
-        <button type="submit" class="btn btn-default mb-2">Filter</button>
-    </form>
-@endsection
-
 @section('content')
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <h1 class="h3 mb-0 text-gray-800">Questions</h1>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success float-end" href="{{ route('questions.create') }}">
+                Create new Question
+            </a>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <form class="form-inline d-flex gap-2" method="GET">
+                <div class="form-group mb-0 flex-grow-1">
+                    <input type="text" class="form-control w-100" id="filter" name="filter" placeholder="Search title..." value="{{$filter}}">
+                </div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+    </div>
+
+
 <!-- Main content -->
 <section class="content">
 
@@ -140,7 +144,7 @@
 <!-- /.content -->
 @endsection
 
-@section('javascript')
+@section('jscript')
 <script>
     $(document).ready(function() {
         // show alert before deleting post

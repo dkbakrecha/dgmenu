@@ -85,57 +85,96 @@
 }
 
 </style>
-<!-- Search Form Section -->
-<div class="search-section text-center mb-5">
-    <div class="container">
-        <form action="{{ route('recipes.index') }}" method="GET" class="d-flex justify-content-center flex-column align-items-center">
-            <!-- Search Input -->
-            <div class="input-group mb-3">
-                <input type="text" name="search" placeholder="Search recipes..." value="{{ request('search') }}" class="form-control form-control-lg" aria-label="Search recipes">
-                <button type="submit" class="btn btn-primary btn-lg ml-2">Search</button>
-            </div>
-            
-            <!-- Category Dropdown -->
-            <div class="input-group mb-3">
-                <select name="category" class="form-control form-control-lg">
-                    <option value="">All Categories</option>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- Recipes List -->
 <div class="container my-4">
-    <h2 class="text-center my-4">Recipes</h2>
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-dark">Find Your Favorite Recipe</h1>
+        <p class="lead text-muted">Explore delicious recipes from around the world.</p>
+    </div>
 
-    <!-- Loop through each recipe -->
-    @foreach ($recipes as $recipe)
-        <div class="recipe-card d-flex mb-3">
-            <!-- Recipe Image -->
-            <img src="{{ asset('storage/' . $recipe->image) }}" class="recipe-image" alt="{{ $recipe->title }} Image">
-            
-            <!-- Recipe Content -->
-            <div class="recipe-content">
-                <!-- Recipe Title with Hyperlink -->
-                <h5 class="card-title">
-                    <a href="{{ route('recipes.show', $recipe->slug) }}">{{ $recipe->title }}</a>
-                </h5>
-                <!-- Category Display -->
-                <p class="card-category">Category: {{ $recipe->category->name }}</p>
-                <!-- Recipe Description -->
-                <p class="card-text">{{ Str::limit($recipe->description, 300) }}</p>
+    <div class="row">
+        <!-- Mobile Filter Toggle Button -->
+        <div class="d-lg-none mb-3">
+            <button class="btn btn-primary w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#recipeFilterOffcanvas" aria-controls="recipeFilterOffcanvas">
+                <i class="bi bi-funnel-fill me-2"></i> Filter Recipes
+            </button>
+        </div>
 
-                <form action="{{ route('recipes.share', $recipe->id) }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-success">Share to Telegram</button>
-            </form>
+        <!-- Sidebar Filter (Desktop & Mobile Offcanvas) -->
+        <div class="col-lg-3 mb-4">
+            <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="recipeFilterOffcanvas" aria-labelledby="recipeFilterOffcanvasLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="recipeFilterOffcanvasLabel">Filter Recipes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#recipeFilterOffcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body p-0">
+                    <div class="card shadow-sm border-0 w-100">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3 d-none d-lg-block">Filter Recipes</h5>
+                            <form action="{{ route('recipes.index') }}" method="GET">
+                                <div class="mb-3">
+                                    <label for="search" class="form-label">Search</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+                                        <input type="text" name="search" id="search" placeholder="Search recipes..." value="{{ request('search') }}" class="form-control border-start-0">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="category" class="form-label">Category</label>
+                                    <select name="category" id="category" class="form-select" onchange="this.form.submit()">
+                                        <option value="">All Categories</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    @endforeach
+
+        <!-- Recipes List -->
+        <div class="col-lg-9">
+            <div class="row">
+                @foreach ($recipes as $recipe)
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm border-0 hover-shadow transition-all">
+                        <div class="position-relative">
+                            @if(!empty($recipe->image))
+                            <img src="{{ asset('storage/' . $recipe->image) }}" class="card-img-top" alt="{{ $recipe->title }}" style="height: 200px; object-fit: cover;">
+                            @else
+                            <img src="{{ asset('img/no_recipe_image.png') }}" class="card-img-top" alt="{{ $recipe->title }}" style="height: 200px; object-fit: cover;">
+                            @endif
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ route('recipes.show', $recipe->slug) }}" class="text-decoration-none text-dark stretched-link">{{ $recipe->title }}</a>
+                            </h5>
+                            @if(isset($recipe->category->name))
+                            <p class="card-text text-muted small mb-2">
+                                <i class="bi bi-tags-fill text-primary me-1"></i> {{ $recipe->category->name }}
+                            </p>
+                            @endif
+                            <p class="card-text small text-muted">{{ Str::limit($recipe->description, 100) }}</p>
+                            
+                            <div class="mt-3">
+                                <form action="{{ route('recipes.share', $recipe->id) }}" method="POST" class="d-inline position-relative" style="z-index: 2;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-outline-success">
+                                        <i class="bi bi-telegram"></i> Share
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection

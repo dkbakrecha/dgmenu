@@ -1,7 +1,7 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @if (session()->has('message'))
-    @section('alerts')
+    @section('jscript')
         <div class="alert alert-success alert-dismissible fade show light-green" role="alert">
             {!! session('message') !!}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -11,13 +11,15 @@
     @endsection
 @endif
 
-@section('breadcrumb')
-    <div class="col-sm-6">
-        <h2 class="m-0">Edit Tag</h2>
-    </div><!-- /.col -->  
-@endsection
-
 @section('content')
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <h2 class="m-0">Edit Tag</h2>
+        </div>
+    </div>
+
+
     <!-- Main content -->
     <section class="content">
         <form method="POST" action="{{ route('tags.update', $tag->id) }}" enctype="multipart/form-data">
@@ -50,4 +52,5 @@
         </form>
     </section>
     <!-- /.content -->
+</div>
 @endsection

@@ -11,10 +11,11 @@
 @endif
 
 @section('header')
-<div class="dashboard-heading pb-1 pt-4">
-    <div class="container-fluid px-4">
-        <h1 class="">Business Listing</h1>
-        <a href="{{ route('business_listing.create') }}" class="btn btn-success pull-right">Add Listing</a>
+<div class="bg-dark py-5 text-center text-white mb-4">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Business Listing</h1>
+        <p class="lead text-white-50">Discover great places to eat and drink</p>
+        <a href="{{ route('business_listing.create') }}" class="btn btn-primary rounded-pill px-4 mt-3">Add Listing</a>
     </div>
 </div>
 @endsection

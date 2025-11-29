@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Post extends Model
 {
     use HasFactory;
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'title', 
@@ -19,7 +19,8 @@ class Post extends Model
         'user_id', 
         'post_type', 
         'view_count', 
-        'cover_image'
+        'cover_image',
+        'category_id'
     ];
 
 
@@ -33,9 +34,9 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function tags()

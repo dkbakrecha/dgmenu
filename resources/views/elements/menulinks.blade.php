@@ -1,28 +1,8 @@
-<li class="nav-item hide"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-
-<li class="nav-item hide"><a class="nav-link" href="{{ route('resturents') }}" title="Restaurants">Restaurants</a></li>
-<li class="nav-item hide"><a class="nav-link" href="{{ route('recipes.index') }}" title="Recipes">Recipes</a></li>
 <div class="nav">
-                      
-                       
-
-                        @if(isset(auth()->user()->role) && auth()->user()->role == 1)
-                        <!-- Super Admin Links -->
-                        <a href="{{ route('users.index') }}" class="nav-link">
-                            <span class="material-symbols-outlined pe-2">storefront</span>
-                            Users
-                        </a>
-
-                        <a href="{{ route('business_listing.index') }}" class="nav-link">
-                            <span class="material-symbols-outlined pe-2">storefront</span>
-                            Business Listing
-                        </a>
-                        @endif
-
-                        
-
-
-                    </div>
+    @if(Auth::check())
+    <a href="{{ route('board') }}" class="nav-link">Dashboard</a>
+    @endif
+</div>
  @if(Auth::check())
         @php
             $unreadCount = 0;

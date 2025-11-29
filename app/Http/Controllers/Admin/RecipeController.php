@@ -62,6 +62,8 @@ class RecipeController extends Controller
     {
         $request->validate([
             'title' => 'required|unique:recipes,title,' . $recipe->id,
+            'slug' => 'required',
+
             'description' => 'required',
             'ingredients' => 'required',
             'steps' => 'required',
@@ -69,7 +71,7 @@ class RecipeController extends Controller
             'image' => 'nullable|image|max:2048',
         ]);
 
-        $data = $request->only(['title','description','ingredients','steps','category_id']);
+        $data = $request->only(['title','slug','description','ingredients','steps','category_id']);
 
         if ($request->hasFile('image')) {
             if ($recipe->image && file_exists(public_path('storage/'.$recipe->image))) {
@@ -84,7 +86,7 @@ class RecipeController extends Controller
             $recipe->tags()->sync($request->tags);
         }
 
-        return redirect()->route('admin.recipes.index')
+        return redirect()->route('recipes.index')
             ->with('success','Recipe updated successfully.');
     }
 

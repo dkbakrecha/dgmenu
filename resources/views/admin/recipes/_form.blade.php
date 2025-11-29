@@ -14,6 +14,16 @@
         @error('title') <div class="text-danger">{{ $message }}</div> @enderror
     </div>
 
+    <div class="mb-3">
+        <label class="form-label">Slug</label>
+        <input type="text" name="slug"
+            class="form-control @error('slug') is-invalid @enderror"
+            value="{{ old('slug', $recipe->slug ?? '') }}" required>
+
+        @error('slug') <div class="text-danger">{{ $message }}</div> @enderror
+    </div>
+
+
     {{-- Description --}}
     <div class="mb-3">
         <label class="form-label">Description</label>
@@ -49,16 +59,16 @@
     {{-- Category Dropdown --}}
     <div class="mb-3">
         <label class="form-label">Category</label>
-        <select name="category_id" class="form-control" required>
-            <option value="">Select Category</option>
+       <select name="category_id" class="form-control" required>
+    <option value="">Select Category</option>
+                @foreach($categories as $cat)
+                    <option value="{{ $cat->id }}" @if(old('category_id', $recipe->category_id ?? null) == $cat->id) selected @endif>
 
-            @foreach($categories as $cat)
-                <option value="{{ $cat->id }}"
-                    @selected(old('category_id', $recipe->category_id ?? '') == $cat->id)>
-                    {{ $cat->name }}
-                </option>
-            @endforeach
+                        {{ $cat->name }}
+                     </option>
+                @endforeach
         </select>
+
 
         @error('category_id') <div class="text-danger">{{ $message }}</div> @enderror
     </div>
